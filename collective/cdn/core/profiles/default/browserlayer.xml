@@ -1,0 +1,6 @@
+<layers>
+ <layer
+     name="CDNSupport"
+     interface="collective.cdn.core.browser.interfaces.ICDNLayer"
+     />
+</layers>

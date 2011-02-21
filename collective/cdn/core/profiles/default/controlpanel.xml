@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="collective.cdn.core">
+  <configlet title="CDN Configuration" action_id="cdn"
+     appId="collective.cdn.core" category="Products" condition_expr=""
+     icon_expr="string:${portal_url}/++resource++cdn_resources/cdn_icon.png"
+     url_expr="string:${portal_url}/@@cdn-controlpanel"
+     visible="True" i18n:attributes="title">
+    <permission>Manage portal</permission>
+  </configlet>
+</object>

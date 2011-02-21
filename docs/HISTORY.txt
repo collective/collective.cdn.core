@@ -1,0 +1,11 @@
+Changelog
+=========
+
+0.5 - Unreleased
+----------------
+
+* Experimental support for Archetypes ImageField [erico_andrei]
+
+* Support for resource registries items [erico_andrei]
+
+* Initial release of collective.cdn.core [erico_andrei]

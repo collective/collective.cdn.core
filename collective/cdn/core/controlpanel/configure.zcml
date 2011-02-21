@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <adapter factory=".cdn.CDNControlPanelAdapter" />
+
+  <browser:page
+    name="cdn-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".cdn.CDNControlPanel"
+    permission="cmf.ManagePortal"
+    />
+
+</configure>

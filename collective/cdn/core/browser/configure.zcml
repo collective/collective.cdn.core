@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.cdn.core">
+
+  <!-- -*- extra stuff goes here -*- -->
+  <browser:resourceDirectory
+        name="cdn_resources"
+        directory="resources"
+        layer=".interfaces.ICDNLayer"
+        permission="zope.Public"
+        />
+  
+  <!-- -*- apply our views -*- -->
+  <browser:page
+      for="*"
+      name="resourceregistries_scripts_view"
+      class=".scripts.ScriptsView"
+      permission="zope.Public"
+      layer=".interfaces.ICDNLayer"
+      allowed_interface=".interfaces.IScriptsView"
+    />
+
+  <browser:page
+      for="*"
+      name="resourceregistries_styles_view"
+      class=".styles.StylesView"
+      permission="zope.Public"
+      layer=".interfaces.ICDNLayer"
+      allowed_interface=".interfaces.IStylesView"
+      />
+  
+  <browser:page
+      for="*"
+      name="resourceregistries_kss_view"
+      class=".kss.KSSView"
+      permission="zope.Public"
+      layer=".interfaces.ICDNLayer"
+      allowed_interface=".interfaces.IKSSView"
+      />
+</configure>

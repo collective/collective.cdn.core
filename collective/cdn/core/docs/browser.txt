@@ -1,0 +1,80 @@
+collective.cdn.core
+======================
+
+First some initial setup code:
+
+    >>> from zope.component import getUtility
+    >>> from Products.CMFCore.interfaces import IPropertiesTool
+    >>> ptool = getUtility(IPropertiesTool)
+    >>> self.failIf(ptool.cdn_properties.enable_cdn_css)
+    >>> self.failIf(ptool.cdn_properties.enable_cdn_js)
+    >>> self.failIf(ptool.cdn_properties.enable_cdn_kss)
+
+CDN Support
+------------
+
+Login as portal manager::
+
+    >>> self.loginAsManager()
+
+Access the portal home and count the occurrences of 'portal_javascripts', 
+'portal_css' and 'portal_kss'::
+
+    >>> self.browser.open('http://nohost/plone/')
+    >>> originalHome = self.browser.contents
+    >>> pJsCount = originalHome.count('http://nohost/plone/portal_javascripts')
+    >>> pCssCount = originalHome.count('http://nohost/plone/portal_css')
+    >>> pKssCount = originalHome.count('http://nohost/plone/portal_kss')
+
+Now we will enable Coral Networks support, so we access the control panel and 
+enable the cdn support::
+
+    >>> self.browser.open('http://nohost/plone/@@cdn-controlpanel')
+    >>> self.failUnless(self.browser.url.endswith('cdn-controlpanel'))
+    >>> self.browser.getControl(name='form.enable_cdn_css').value = True
+    >>> self.browser.getControl(name='form.enable_cdn_js').value = True
+    >>> self.browser.getControl(name='form.enable_cdn_kss').value = True
+
+Choose 'FakeProvider' as our CDN provider::
+
+    >>> self.browser.getControl(name='form.cdn_provider').value = ['FakeProvider',]
+
+And click the save button::
+
+    >>> self.browser.getControl(name="form.actions.save").click()
+    >>> self.failUnless(self.browser.url.endswith('cdn-controlpanel'))
+    >>> self.failUnless('Changes saved.' in self.browser.contents)
+
+Make sure the changes have been applied correctly to the tool::
+
+    >>> self.failUnless(ptool.cdn_properties.enable_cdn_css == True)
+    >>> self.failUnless(ptool.cdn_properties.enable_cdn_js == True)
+    >>> self.failUnless(ptool.cdn_properties.enable_cdn_kss == True)
+    >>> self.failUnless(ptool.cdn_properties.cdn_provider == 'FakeProvider')
+
+Now we, again, access the portal home and changes must have been applied. To
+be certain we will count the occurrences of 'portal_javascripts', 'portal_css'
+ and 'portal_kss' and these numbers should match the ones we measured before ::
+
+    >>> self.browser.open('http://nohost/plone/')
+    >>> cdnHome = self.browser.contents
+    >>> pJsCDNCount = cdnHome.count('http://example.net/plone/portal_javascripts')
+    >>> pCssCDNCount = cdnHome.count('http://example.net/plone/portal_css')
+    >>> pKssCDNCount = cdnHome.count('http://example.net/plone/portal_kss')
+    >>> self.failUnless(pJsCount == pJsCDNCount)
+    >>> self.failUnless(pCssCount == pCssCDNCount)
+    >>> self.failUnless(pKssCount == pKssCDNCount)
+
+Let's turn everything back to factory settings by disabling our FakeProvider 
+settings::
+
+    >>> self.browser.open('http://nohost/plone/@@cdn-controlpanel')
+    >>> self.failUnless(self.browser.url.endswith('cdn-controlpanel'))
+    >>> self.browser.getControl(name='form.enable_cdn_css').value = False
+    >>> self.browser.getControl(name='form.enable_cdn_js').value = False
+    >>> self.browser.getControl(name='form.enable_cdn_kss').value = False
+    >>> self.browser.getControl(name='form.cdn_provider').value = ['FakeProvider',]
+    >>> self.browser.getControl(name="form.actions.save").click()
+    >>> self.failUnless(self.browser.url.endswith('cdn-controlpanel'))
+    >>> self.failUnless('Changes saved.' in self.browser.contents)
+

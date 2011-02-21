@@ -1,0 +1,13 @@
+<object name="portal_properties">
+  <object name="cdn_properties" meta_type="Plone Property Sheet">
+    <property name="title">CDN Properties</property>
+    <property name="enable_cdn_css" type="boolean">False</property>
+    <property name="enable_cdn_js" type="boolean">False</property>
+    <property name="enable_cdn_kss" type="boolean">False</property>
+    <property name="enable_cdn_image" type="boolean">False</property>
+    <property name="cdn_provider" type="string">CoralCDN</property>
+    <property name="cdn_hostname" type="lines"></property>
+    <property name="cdn_port" type="int">80</property>
+    <property name="cdn_path" type="string"></property>    
+  </object>
+</object>
