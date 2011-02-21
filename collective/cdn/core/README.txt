@@ -86,9 +86,9 @@ for example, using the alias localhost for a site running on 127.0.0.1.
 
 Known Issues
 ==============
-Serving javascripts resources from a server not on the same domain as 
-the main site could break some Plone features as this would fail the
-same origin policy for javascript [#]_.
+Serving javascripts resources from a server not on the same domain as  
+the main site could break some Plone features as this would fail the 
+`same origin policy for javascript <https://developer.mozilla.org/en/Same_origin_policy_for_JavaScript>`_.
 
 Serving images from CDN still is considered a experimental feature as 
 it only supports images which are referenced through the *tag* method 
@@ -107,5 +107,5 @@ Credits
 
     * Simples Consultoria (products at simplesconsultoria dot com dot br) - 
       Implementation
-    
-.. [#] https://developer.mozilla.org/en/Same_origin_policy_for_JavaScript
+
+
