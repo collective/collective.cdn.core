@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 from Products.CMFCore.utils import getToolByName
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
