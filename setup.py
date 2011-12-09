@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
-from setuptools import setup, find_packages
 import os
+from setuptools import setup, find_packages
 
-version = open(os.path.join("collective", "cdn", "core", "version.txt")).read().strip()
+
+version = open(os.path.join("collective", "cdn",
+                            "core", "version.txt")).read().strip()
 
 setup(name='collective.cdn.core',
       version=version,
       description="CDN support for Plone",
-      long_description=open(os.path.join("collective", "cdn", "core", "README.txt")).read() + "\n" +
+      long_description=open(os.path.join("collective", "cdn",
+                                         "core", "README.txt")).read() + "\n" +
                         open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
         "Framework :: Plone :: 3.3",
@@ -40,4 +42,3 @@ setup(name='collective.cdn.core',
       target = plone
       """,
       )
-
