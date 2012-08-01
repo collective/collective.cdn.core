@@ -9,14 +9,14 @@ version = open(os.path.join("collective", "cdn",
 setup(name='collective.cdn.core',
       version=version,
       description="CDN support for Plone",
-      long_description=open(os.path.join("collective", "cdn",
-                                         "core", "README.txt")).read() + "\n" +
+      long_description=open("README.txt").read() + "\n" +
                         open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
         "Framework :: Plone",
         "Framework :: Plone :: 3.3",
         "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
         "Framework :: Zope2",
         "Framework :: Zope3",
         "Programming Language :: Python",
