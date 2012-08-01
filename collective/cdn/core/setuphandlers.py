@@ -22,7 +22,7 @@ def doUpgrades(context):
     enable_cache = False
     version = setup_tool.getLastVersionForProfile(_PROFILE_ID)
     upgradeSteps = listUpgradeSteps(setup_tool, _PROFILE_ID, version)
-    sorted(upgradeSteps, key=lambda step: step['sortkey'])
+    sorted(upgradeSteps, key=lambda step: int(step['sortkey']))
 
     if cache and cache.getEnabled():
         # In case we have a cache fu, disable it to avoid a
