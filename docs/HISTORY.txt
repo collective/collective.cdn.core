@@ -4,6 +4,8 @@ Changelog
 0.6 (unreleased)
 -----------------
 
+* Refactor tests to use plone.app.testing [ericof]
+
 * PEP 8 cleanup [ericof]
 
 * Import IVocabularyFactory from zope.schema.interfaces. [ericof]
@@ -11,8 +13,8 @@ Changelog
 0.5 (2011-02-21)
 ----------------
 
-* Experimental support for Archetypes ImageField [erico_andrei]
+* Experimental support for Archetypes ImageField [ericof]
 
-* Support for resource registries items [erico_andrei]
+* Support for resource registries items [ericof]
 
-* Initial release of collective.cdn.core [erico_andrei]
+* Initial release of collective.cdn.core [ericof]

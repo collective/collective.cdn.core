@@ -26,6 +26,8 @@ Requirements
 
    * Plone 3.3.x (http://plone.org/products/plone)
    * Plone 4.0.x (http://plone.org/products/plone)
+   * Plone 4.1.x (http://plone.org/products/plone)
+   * Plone 4.2.x (http://plone.org/products/plone)
     
 Installation
 =============
